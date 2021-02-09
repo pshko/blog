@@ -9,15 +9,15 @@
 }
 
 *:before, *:after {
-    font-family: digikala;
+    font-family: digikala !important;
 }
 
 input, button {
-    font-family: irs;
+    font-family: Vazir;
 }
 
 body, html {
-    font-family: irs;
+    font-family: Vazir;
     direction: rtl;
 }
 
@@ -139,7 +139,7 @@ textarea {
     border-radius: 3px;
     width: 100%;
     height: 220px !important;
-    font-family: irs;
+    font-family: Vazir;
     font-size: 13px;
 }
 
@@ -1295,7 +1295,7 @@ select {
     font-style: normal;
     white-space: nowrap;
     color: #80868a;
-    font-family: iransans !important;
+    font-family: Vazir !important;
     display: inline-block;
     border-radius: 21px;
     padding: 4px 25px;
@@ -1723,7 +1723,7 @@ span.tagRemove:hover {
 }
 
 .transition-ticket-body pre, .transition-comment-body pre {
-    font-family: IRANSans;
+    font-family: Vazir;
     overflow: hidden;
     white-space: pre-line;
     color: #424242;

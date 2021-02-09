@@ -13,7 +13,7 @@
 
 body {
     background: #eee;
-    font-family: IRANSans !important;
+    font-family: Vazir !important;
     direction: rtl;
 }
 
@@ -38,7 +38,7 @@ a, span {
 }
 
 button, input {
-    font-family: irs;
+    font-family: Vazir;
 }
 
 .d-none {
@@ -66,7 +66,7 @@ button, input {
     margin-bottom: 15px;
     text-align: left;
     font-size: 13px !important;
-    font-family: IRANSans;
+    font-family: Vazir;
 
 }
 
@@ -78,7 +78,7 @@ textarea {
     border-radius: 3px;
     width: 100%;
     height: 220px !important;
-    font-family: IRANSans;
+    font-family: Vazir;
     font-size: 13px;
 }
 
@@ -759,7 +759,7 @@ textarea {
     border-radius: 3px;
     width: 100%;
     height: 220px !important;
-    font-family: IRANSans;
+    font-family: Vazir !important;
     font-size: 13px;
     background: #f9f9f9;
 }
