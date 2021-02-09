@@ -20,6 +20,8 @@
             <div class="box__camera default__avatar"></div>
         </div>
         <span class="profile__name">کاربر : {{ auth()->user()->name }}</span>
+        <span class="profile__name">نقش : {{ auth()->user()->getRoleInPersian() }}</span>
+
     </div>
 
     <ul>
