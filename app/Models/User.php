@@ -21,6 +21,7 @@ class User extends Authenticatable
         'mobile',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -47,5 +48,9 @@ class User extends Authenticatable
         if($this->role === 'user') return 'کاربر عادی';
         if($this->role === 'author') return 'نویسنده';
         if($this->role === 'admin') return 'مدیر';
+        }
+        public function getCreateAtInJalali()
+        {
+            return verta($this->created_at)->format('Y/m/d');
         }
 }

@@ -13,16 +13,28 @@
         <div class="row no-gutters  bg-white">
             <div class="col-12">
                 <p class="box__title">ویرایش کاربر</p>
-                <form action="" class="padding-30" method="post">
-                    <input type="text" class="text" placeholder="نام و نام خانوادگی">
-                    <input type="text" class="text" placeholder="ایمیل">
-                    <input type="text" class="text" placeholder="شماره موبایل">
-                    <input type="text" class="text" placeholder="آی پی" value="102.111.11" disabled>
-                    <select name="" id="">
-                        <option value="0">کاربر عادی</option>
-                        <option value="2">نویسنده</option>
-                        <option value="3">مدیر</option>
+                <form action="{{ route('users.store') }}" class="padding-30" method="post">
+                    @csrf
+                    <input type="text" name="name" class="text" placeholder="نام و نام خانوادگی">
+                        @error('name')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <input type="email" name="email" class="text" placeholder="ایمیل">
+                        @error('email')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <input type="text" name="mobile" class="text" placeholder="شماره موبایل">
+                        @error('mobile')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <select name="role" id="">
+                        <option value="user" selected>کاربر عادی</option>
+                        <option value="author">نویسنده</option>
+                        <option value="admin">مدیر</option>
                     </select>
+                        @error('role')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
                     <button class="btn btn-webamooz_net">ایجاد کاربر</button>
                 </form>
 

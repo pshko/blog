@@ -12,20 +12,31 @@
     <div class="main-content font-size-13">
         <div class="row no-gutters bg-white margin-bottom-20">
             <div class="col-12">
-                <p class="box__title">ایجاد کاربر</p>
-                <form action="" class="padding-30" method="post">
-                    <input type="text" class="text" placeholder="نام و نام خانوادگی">
-                    <input type="text" class="text" placeholder="ایمیل">
-                    <input type="text" class="text" placeholder="شماره موبایل">
-                    <input type="text" class="text" placeholder="آی پی">
-                    <select name="" id="">
-                        <option value="0">سطح کاربری</option>
-                        <option value="1">کاربر عادی</option>
-                        <option value="2">مدرس</option>
-                        <option value="3">نویسنده</option>
-                        <option value="4">مدیر</option>
+                <p class="box__title">ویرایش کاربر</p>
+                <form action="{{ route('users.update', $user->id) }}" class="padding-30" method="post">
+                    @csrf
+                    @method('put')
+                    <input type="text" name="name" class="text" value="{{ $user->name }}">
+                        @error('name')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <input type="email" name="email" class="text" value="{{ $user->email }}">
+                        @error('email')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <input type="text" name="mobile" class="text" value="{{ $user->mobile }}">
+                        @error('mobile')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <select name="role" id="">
+                        <option value="user" @if($user->role === 'user') selected @endif>کاربر عادی</option>
+                        <option value="author" @if($user->role === 'author') selected @endif>نویسنده</option>
+                        <option value="admin" @if($user->role === 'admin') selected @endif>مدیر</option>
                     </select>
-                    <button class="btn btn-webamooz_net">ویرایش کاربر</button>
+                        @error('role')
+                            <p class="error">{{ $message }}</p>
+                        @enderror
+                    <button class="btn btn-webamooz_net" type="submit">ویرایش کاربر</button>
                 </form>
 
             </div>

@@ -39,29 +39,43 @@
                     <th>شناسه</th>
                     <th>نام و نام خانوادگی</th>
                     <th>ایمیل</th>
+                    <th>موبایل</th>
                     <th>سطح کاربری</th>
                     <th>تاریخ عضویت</th>
-                    <th>وضعیت حساب</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
                 <tbody>
+                    @foreach($users as $user)
                 <tr role="row" class="">
-                    <td><a href="">1</a></td>
-                    <td><a href="">محمد نیکو</a></td>
-                    <td>programming@gmail.com</td>
-                    <td>کاربر عادی</td>
-                    <td>1399/11/11</td>
-                    <td class="text-success">تاییده شده</td>
+                    <td>{{ $user->id }}</td>
+                    <td>{{  $user->name  }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->mobile }}</td>
+                    <td>{{ $user->getRoleInPersian() }}</td>
+                    <td>{{ $user->getCreateAtInJalali() }}</td>
                     <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="" class="item-confirm mlg-15" title="تایید"></a>
-                        <a href="" class="item-reject mlg-15" title="رد"></a>
-                        <a href="{{ route('users.edit', 1) }}" class="item-edit " title="ویرایش"></a>
+                        @if(auth()->user()->id !== $user->id)
+                        <a href="{{ route('users.destroy', $user->id) }}" onclick="destroyUser(event, {{ $user->id }})" class="item-delete mlg-15" title="حذف"></a>
+                        @endif
+                        <a href="{{ route('users.edit', $user->id) }}" class="item-edit " title="ویرایش"></a>
+                        <form action="{{ route('users.destroy', $user->id) }}" method="post" id="destroy-user-{{ $user->id }}">
+                            @csrf
+                            @method('delete')
+                        </form>
                     </td>
                 </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    <x-slot name="script">
+        <script>
+            function destroyUser(event,id){
+                event.preventDefault();
+                document.getElementById(`destroy-user-${id}`).submit();
+            }
+        </script>
+    </x-slot>
 </x-panel-layout>

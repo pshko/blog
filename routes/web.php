@@ -31,4 +31,4 @@ Route::get('/profile', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('/panel/users', UserController::class);
+Route::middleware('auth')->resource('/panel/users', UserController::class);
