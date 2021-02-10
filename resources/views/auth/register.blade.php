@@ -13,41 +13,33 @@
                 <div>
                     <input type="text" class="text text--right" name="name" placeholder="نام  و نام خانوادگی">
                     @error('name')
-                        <p style="text-align: right;
-                                  margin-bottom: 1rem;
-                                  color: #D8000C;">
-                                  {{ $message }}
-                                 </p>
+                    <p class="error">
+                        {{ $message }}
+                    </p>
                     @enderror
                 </div>
                 <div>
                     <input type="text" class="text text--left" name="mobile" placeholder="شماره موبایل">
                     @error('mobile')
-                    <p style="text-align: right;
-                              margin-bottom: 1rem;
-                              color: #D8000C;">
-                              {{ $message }}
-                             </p>
+                    <p class="error">
+                        {{ $message }}
+                    </p>
                 @enderror
                 </div>
                 <div>
                     <input type="email" class="text text--left" name="email" placeholder="ایمیل">
                     @error('email')
-                    <p style="text-align: right;
-                              margin-bottom: 1rem;
-                              color: #D8000C;">
-                              {{ $message }}
-                             </p>
+                    <p class="error">
+                        {{ $message }}
+                    </p>
                 @enderror
                 </div>
                 <div>
                     <input type="password" class="text text--left" name="password" placeholder="رمز عبور">
                     @error('password')
-                    <p style="text-align: right;
-                              margin-bottom: 1rem;
-                              color: #D8000C;">
-                              {{ $message }}
-                             </p>
+                    <p class="error">
+                        {{ $message }}
+                    </p>
                 @enderror
                 </div>
                 <div>

@@ -14,27 +14,21 @@
 
                 <input type="text" name="email" class="text text--left" placeholder="ایمیل" value="{{ $request->email }}">
                 @error('email')
-                    <p style="text-align: right;
-                              margin-bottom: 1rem;
-                              color: #D8000C;">
-                              {{ $message }}
-                    </p>
+                <p class="error">
+                    {{ $message }}
+                </p>
                 @enderror
                 <input type="password" name="password" class="text text--left" placeholder="رمز عبور جدید">
                 @error('password')
-                    <p style="text-align: right;
-                              margin-bottom: 1rem;
-                              color: #D8000C;">
-                              {{ $message }}
-                    </p>
+                <p class="error">
+                    {{ $message }}
+                </p>
                 @enderror
                 <input type="password" name="password_confirmation" class="text text--left" placeholder="تایید رمز عبور">
                 @error('email')
-                    <p style="text-align: right;
-                              margin-bottom: 1rem;
-                              color: #D8000C;">
-                              {{ $message }}
-                    </p>
+                <p class="error">
+                    {{ $message }}
+                </p>
                 @enderror
                 <button class="btn btn--blue btn--shadow-blue width-100 ">بازیابی</button>
                 <div class="sign-page__footer">
