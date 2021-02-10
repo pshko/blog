@@ -55,7 +55,7 @@
                     <td>{{ $user->getRoleInPersian() }}</td>
                     <td>{{ $user->getCreateAtInJalali() }}</td>
                     <td>
-                        @if(auth()->user()->id !== $user->id)
+                        @if(auth()->user()->id !== $user->id && $user->role !== 'admin')
                         <a href="{{ route('users.destroy', $user->id) }}" onclick="destroyUser(event, {{ $user->id }})" class="item-delete mlg-15" title="حذف"></a>
                         @endif
                         <a href="{{ route('users.edit', $user->id) }}" class="item-edit " title="ویرایش"></a>
