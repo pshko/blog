@@ -27,7 +27,7 @@
                         @error('mobile')
                             <p class="error">{{ $message }}</p>
                         @enderror
-                    <select name="role" id="">
+                    <select class="select" name="role" id="">
                         <option value="user" selected>کاربر عادی</option>
                         <option value="author">نویسنده</option>
                         <option value="admin">مدیر</option>
