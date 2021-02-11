@@ -25,10 +25,10 @@ Route::get('/post/{id}', function () {
     return view('post');
 })->name('post');
 
-Route::get('/profile', function () {
+Route::middleware('auth')->get('/profile', function () {
     return view('user.profile');
 })->name('profile');
 
 require __DIR__.'/auth.php';
 
-Route::middleware('auth')->resource('/panel/users', UserController::class);
+Route::middleware(['auth', 'admin'])->resource('/panel/users', UserController::class);
