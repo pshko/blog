@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Panel\UserController;
+use App\Http\Controllers\Panel\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,8 @@ Route::middleware('auth')->get('/profile', function () {
     return view('user.profile');
 })->name('profile');
 
+Route::middleware(['auth', 'admin'])->prefix('/panel')->group(function () {
+    Route::resource('/users', UserController::class)->except(['show']);
+    Route::resource('/categories',CategoryController::class)->except(['show', 'create', 'edit']);
+});
 require __DIR__.'/auth.php';
-
-Route::middleware(['auth', 'admin'])->resource('/panel/users', UserController::class);
