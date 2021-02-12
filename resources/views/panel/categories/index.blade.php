@@ -2,6 +2,9 @@
     <x-slot name="title">
         | دسته بندی ها
     </x-slot>
+    <x-slot name="styles">
+        <link rel="stylesheet" href="{{ asset('blog/css/style.css') }}">
+    </x-slot>
     <div class="breadcrumb">
         <ul>
             <li><a href="{{ route('dashboard') }}">پیشخوان</a></li>
@@ -12,7 +15,7 @@
         <div class="row no-gutters  ">
             <div class="col-8 margin-left-10 margin-bottom-15 border-radius-3">
                 <p class="box__title">دسته بندی ها</p>
-                <div class="table__box">
+                <div class="bg-white table__box">
                     <table class="table">
                         <thead role="rowgroup">
                         <tr role="row" class="title-row">
@@ -24,18 +27,21 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($categories as $category)
                         <tr role="row" class="">
-                            <td><a href="">id</a></td>
-                            <td><a href="">name</a></td>
-                            <td>slug</td>
-                            <td>ندارد</td>
+                            <td><a href="">{{ $category->id }}</a></td>
+                            <td><a href="">{{ $category->name }}</a></td>
+                            <td>{{ $category->slug }}</td>
+                            <td>{{$category->getParentName()}}</td>
                             <td>
                                 <a href="" class="item-delete mlg-15" title="حذف"></a>
                                 <a href="edit-category.html" class="item-edit " title="ویرایش"></a>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                    {{ $categories->links() }}
                 </div>
             </div>
             <div class="col-4 bg-white">
