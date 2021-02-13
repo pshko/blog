@@ -36,7 +36,6 @@
             <a class="header__logo" href="{{ route('landing') }}"></a>
         </div>
         <div class="header__left d-flex flex-end item-center margin-top-2">
-            <span class="account-balance font-size-12">موجودی : 2500,000 تومان</span>
             <div class="notification margin-15">
                 <a class="notification__icon"></a>
                 <div class="dropdown__notification">

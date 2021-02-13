@@ -54,8 +54,10 @@ class CategoryController extends Controller
     }
 
 
-    public function destroy(Category $category)
+    public function destroy(Request $request, Category $category)
     {
-        //
+        $category->delete();
+        session()->flash('status', 'دسته بندی مورد نظر با موفقیت حذف گردید!');
+        return back();
     }
 }

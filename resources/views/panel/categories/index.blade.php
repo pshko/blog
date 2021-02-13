@@ -34,8 +34,12 @@
                             <td>{{ $category->slug }}</td>
                             <td>{{$category->getParentName()}}</td>
                             <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
+                                <a href="{{ route('categories.destroy', $category->id) }}" onclick="destroyCategory(event, {{$category->id}})" class="item-delete mlg-15" title="حذف"></a>
                                 <a href="edit-category.html" class="item-edit " title="ویرایش"></a>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="post" id="destroy-category-{{ $category->id }}">
+                                    @csrf
+                                    @method('delete')
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -71,4 +75,12 @@
             </div>
         </div>
     </div>
+    <x-slot name="script">
+        <script>
+            function destroyCategory(event, id) {
+                event.preventDefault();
+                document.getElementById('destroy-category-' + id).submit();
+            }
+        </script>
+    </x-slot>
 </x-panel-layout>
