@@ -8,7 +8,7 @@
             <div class="articles__item">
                 <a href="/post/1" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/anuglar.png') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/anuglar.png') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول چیست ؟ فریم ورک لاراول چیست ؟ </h2>
@@ -28,7 +28,7 @@
             <div class="articles__item">
                 <a href="#" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/aparat.jpg') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/aparat.jpg') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول چیست ؟ </h2>
@@ -46,7 +46,7 @@
             <div class="articles__item">
                 <a href="#" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/aparat.jpg') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/aparat.jpg') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
@@ -67,7 +67,7 @@
             <div class="articles__item">
                 <a href="#" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/aparat.jpg') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/aparat.jpg') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
@@ -88,7 +88,7 @@
             <div class="articles__item">
                 <a href="#" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/aparat.jpg') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/aparat.jpg') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
@@ -109,7 +109,7 @@
             <div class="articles__item">
                 <a href="#" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/aparat.jpg') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/aparat.jpg') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
@@ -130,7 +130,7 @@
             <div class="articles__item">
                 <a href="#" class="articles__link">
                     <div class="articles__img">
-                        <img src="{{asset('/blog/img/banner/anuglar.png') }}" class="articles__img-src">
+                        <img src="{{asset('/blog/img/banners/anuglar.png') }}" class="articles__img-src">
                     </div>
                     <div class="articles__title">
                         <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول

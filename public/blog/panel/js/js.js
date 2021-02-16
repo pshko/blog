@@ -202,7 +202,7 @@ $(document).on('click touchstart', function (e) {
 $('.create-ads .ads-field-pn').on('click', function (e) {
     $('.file-upload').hide()
 });
-$('.create-ads .ads-field-banner').on('click', function (e) {
+$('.create-ads .ads-field-banners').on('click', function (e) {
     $('.file-upload').show()
 });
 $('.discounts #discounts-field-2').on('click', function (e) {

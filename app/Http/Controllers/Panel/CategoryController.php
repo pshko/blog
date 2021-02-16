@@ -14,8 +14,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::with('parent')->paginate(4);
-        $ParentCategories = Category::where('category_id', NULL)->get();
-        return view('panel.categories.index', compact('categories', 'ParentCategories'));
+        $parentCategories = Category::where('category_id', NULL)->get();
+        return view('panel.categories.index', compact('categories', 'parentCategories'));
     }
 
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        $ParentCategories = Category::where('category_id', NULL)->where('id', '!=', $category->id)->get();
+        $parentCategories = Category::where('category_id', NULL)->where('id', '!=', $category->id)->get();
         return view('panel.categories.edit', compact('category', 'ParentCategories'));
     }
 

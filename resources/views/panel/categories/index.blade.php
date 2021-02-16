@@ -63,8 +63,8 @@
                       <p class="box__title margin-bottom-15">انتخاب دسته پدر</p>
                       <select class="select" name="category_id" id="category_id">
                           <option value="">ندارد</option>
-                          @foreach($ParentCategories as $ParentCategory)
-                          <option value="{{ $ParentCategory->id }}">{{ $ParentCategory->name }}</option>
+                          @foreach($parentCategories as $parentCategory)
+                          <option value="{{ $parentCategory->id }}">{{ $parentCategory->name }}</option>
                           @endforeach
                       </select>
                       @error('category_id')
