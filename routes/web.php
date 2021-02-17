@@ -35,7 +35,12 @@ Route::middleware('auth')->get('/profile', function () {
 Route::middleware(['auth', 'admin'])->prefix('/panel')->group(function () {
     Route::resource('/users', UserController::class)->except(['show']);
     Route::resource('/categories',CategoryController::class)->except(['show', 'create']);
-    Route::resource('/posts', PostController::class);
 });
-Route::post('/editor/upload', [EditorUploadController::class, 'upload'])->name('editor-upload');
+
+Route::middleware(['auth', 'author'])->prefix('/panel')->group(function () {
+    Route::resource('/posts', PostController::class);
+    Route::post('/editor/upload', [EditorUploadController::class, 'upload'])->name('editor-upload');
+});
+
+
 require __DIR__.'/auth.php';

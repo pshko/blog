@@ -14,7 +14,14 @@ class PostController extends Controller
 
     public function index()
     {
-        return view('panel.posts.index');
+        if(auth()->user()->role === 'author')
+        {
+            $posts = Post::where('user_id' , auth()->user()->id)->with('user')->paginate(5);
+        } else
+        {
+            $posts = Post::with('user')->paginate(5);
+        }
+        return view('panel.posts.index', compact('posts'));
     }
 
 
@@ -42,6 +49,7 @@ class PostController extends Controller
             $data
         );
         $post->categories()->sync($categoriesId);
+        session()->flash('status', 'پست مورد نظر به درستی ایجاد شد!');
         return redirect()->route('posts.index');
     }
 

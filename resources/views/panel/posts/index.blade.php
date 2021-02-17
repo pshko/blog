@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="table__box">
+        <div class="bg--white table__box">
             <table class="table">
 
                 <thead role="rowgroup">
@@ -43,7 +43,6 @@
                     <th>شناسه</th>
                     <th>عنوان</th>
                     <th>نویسنده</th>
-                    <th>متن</th>
                     <th>تاریخ ایجاد</th>
                     <th>تعداد بازدید ها</th>
                     <th>تعداد نظرات</th>
@@ -51,23 +50,24 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($posts as $post)
                 <tr role="row" class="">
-                    <td><a href="">1</a></td>
-                    <td><a href="">فریم ورک لاراول چیست</a></td>
-                    <td>توفیق حمزئی</td>
-                    <td>فریم ورک لاراول یکی از فریم ورک های محبوب ...</td>
-                    <td>1399/11/11</td>
+                    <td><a href="">{{ $post->id }}</a></td>
+                    <td><a href="">{{ $post->title }}</a></td>
+                    <td>{{ $post->user->name }}</td>
+                    <td>{{ $post->getCreateAtInJalali() }}</td>
                     <td>101</td>
                     <td>10</td>
                     <td>
                         <a href="" class="item-delete mlg-15" title="حذف"></a>
                         <a href="" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="" class="item-edit" title="ویرایش"></a>
+                        <a href="{{ route('posts.edit', $post->id) }}" class="item-edit" title="ویرایش"></a>
                     </td>
                 </tr>
-
+                @endforeach
                 </tbody>
             </table>
+            {{ $posts->links() }}
         </div>
     </div>
 </x-panel-layout>

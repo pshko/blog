@@ -128,7 +128,7 @@ a, span {
     line-height: 40px;
     border: solid 2px #e2e2e2;
     margin-bottom: 15px;
-    text-align: right;
+    text-align: right !important;
     font-size: 13px !important;
 }
 textarea {
