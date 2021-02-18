@@ -42,5 +42,4 @@ Route::middleware(['auth', 'author'])->prefix('/panel')->group(function () {
     Route::post('/editor/upload', [EditorUploadController::class, 'upload'])->name('editor-upload');
 });
 
-
 require __DIR__.'/auth.php';
