@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Post\CreatePostRequest;
+use App\Http\Requests\Panel\Post\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -62,12 +63,30 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('panel.posts.edit');
+        return view('panel.posts.edit', compact('post'));
     }
 
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $categoriesId= Category::whereIn('name', $request->categories)->get()->pluck('id')->toArray();
+        if(count($categoriesId) < 1) {
+            throw ValidationException::withMessages([
+                'categories' => ['دسته بندی یافت نشد.']
+            ]);
+        }
+        $data = $request->validated();
+        if($request->hasFile('banner')) {
+            $file = $request->file('banner');
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('images/banners', $fileName, 'public_files');
+            $data['banner'] = $fileName;
+        }
+        $post -> update(
+            $data
+        );
+        $post->categories()->sync($categoriesId);
+        session()->flash('status', 'پست مورد نظر به درستی ویرایش شد!');
+        return redirect()->route('posts.index');
     }
 
 
