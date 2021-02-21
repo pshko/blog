@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Panel\CommentController;
 use App\Http\Controllers\Panel\EditorUploadController;
 use App\Http\Controllers\Panel\PostController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,9 @@ Route::middleware('auth')->get('/profile', function () {
 Route::middleware(['auth', 'admin'])->prefix('/panel')->group(function () {
     Route::resource('/users', UserController::class)->except(['show']);
     Route::resource('/categories',CategoryController::class)->except(['show', 'create']);
+    Route::get('/comments',[CommentController::class, 'index'])->name('comments.index');
+    Route::delete('/comments/{comment}',[CommentController::class, 'destroy'])->name('comments.destroy');
+
 });
 
 Route::middleware(['auth', 'author'])->prefix('/panel')->group(function () {
