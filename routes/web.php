@@ -38,6 +38,7 @@ Route::middleware(['auth', 'admin'])->prefix('/panel')->group(function () {
     Route::resource('/categories',CategoryController::class)->except(['show', 'create']);
     Route::get('/comments',[CommentController::class, 'index'])->name('comments.index');
     Route::delete('/comments/{comment}',[CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::put('/comments/{comment}',[CommentController::class, 'update'])->name('comments.update');
 
 });
 

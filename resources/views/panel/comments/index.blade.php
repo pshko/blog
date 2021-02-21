@@ -14,9 +14,9 @@
     <div class="main-content">
         <div class="tab__box">
             <div class="tab__items">
-                <a class="tab__item is-active" href="comments.html"> همه نظرات</a>
-                <a class="tab__item " href="comments.html">نظرات تاییده نشده</a>
-                <a class="tab__item " href="comments.html">نظرات تاییده شده</a>
+                <a class="tab__item" href="{{ route('comments.index') }}"> همه نظرات</a>
+                <a class="tab__item" href="{{ route('comments.index', ['approved' => 0]) }}">نظرات تاییده نشده</a>
+                <a class="tab__item" href="{{ route('comments.index', ['approved' => 1]) }}">نظرات تاییده شده</a>
             </div>
         </div>
         <div class="bg-white padding-20">
@@ -60,10 +60,21 @@
                     <td>{{ $comment->replies_count }}</td>
                     <td class="{{ $comment->is_approved ? 'text-success' : 'text-error' }}">{{ $comment->getStatusInPersian() }}</td>
                     <td>
-                        <a href="" class="item-delete mlg-15" title="حذف"></a>
-                        <a href="show-comment.html"  class="item-reject mlg-15" title="رد"></a>
+                        <a href="{{ route('comments.destroy', $comment->id) }}" onclick="destroyComment(event, {{ $comment->id }})" class="item-delete mlg-15" title="حذف"></a>
+                        @if($comment->is_approved)
+                        <a href="{{ route('comments.update', $comment->id) }}" onclick="updateComment(event, {{ $comment->id }})" class="item-reject mlg-15" title="رد"></a>
+                        @else
+                        <a href="{{ route('comments.update', $comment->id) }}" onclick="updateComment(event, {{ $comment->id }})" class="item-confirm mlg-15" title="تایید"></a>
+                        @endif
                         <a href="show-comment.html" target="_blank" class="item-eye mlg-15" title="مشاهده"></a>
-                        <a href="show-comment.html"  class="item-confirm mlg-15" title="تایید"></a>
+                        <form action="{{ route('comments.update', $comment->id) }}" method="post" id="update-comment-{{ $comment->id }}">
+                            @csrf
+                            @method('put')
+                        </form>
+                        <form action="{{ route('comments.destroy', $comment->id) }}" method="post" id="destroy-comment-{{ $comment->id }}">
+                            @csrf
+                            @method('delete')
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -71,4 +82,16 @@
             </table>
         </div>
     </div>
+    <x-slot name="script">
+        <script>
+            function destroyComment(event, id) {
+                event.preventDefault();
+                document.getElementById('destroy-comment-' + id).submit();
+            }
+            function updateComment(event, id) {
+                event.preventDefault();
+                document.getElementById('update-comment-' + id).submit();
+            }
+        </script>
+    </x-slot>
 </x-panel-layout>
