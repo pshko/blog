@@ -3,6 +3,7 @@
 use App\Http\Controllers\Panel\CommentController;
 use App\Http\Controllers\Panel\EditorUploadController;
 use App\Http\Controllers\Panel\PostController;
+use App\Http\Controllers\Panel\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Panel\UserController;
 use App\Http\Controllers\Panel\CategoryController;
@@ -29,9 +30,8 @@ Route::get('/post/{id}', function () {
     return view('post');
 })->name('post');
 
-Route::middleware('auth')->get('/profile', function () {
-    return view('user.profile');
-})->name('profile');
+Route::middleware('auth')->get('panel/profile', [ProfileController::class, 'show'])->name('profile');
+Route::middleware('auth')->put('panel/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::middleware(['auth', 'admin'])->prefix('/panel')->group(function () {
     Route::resource('/users', UserController::class)->except(['show']);
