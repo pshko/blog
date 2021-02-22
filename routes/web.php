@@ -4,6 +4,7 @@ use App\Http\Controllers\Panel\CommentController;
 use App\Http\Controllers\Panel\EditorUploadController;
 use App\Http\Controllers\Panel\PostController;
 use App\Http\Controllers\Panel\ProfileController;
+use App\Http\Controllers\Pnael\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Panel\UserController;
 use App\Http\Controllers\Panel\CategoryController;
@@ -22,9 +23,7 @@ Route::get('/', function () {
     return view('landing');
 })->name('landing');
 
-Route::get('/dashboard', function () {
-    return view('panel.index');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/post/{id}', function () {
     return view('post');
