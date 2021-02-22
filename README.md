@@ -1,3 +1,3 @@
 
-## Blog with Laravel 8
+## Persian Blog with Laravel 8
 
