@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Panel\CommentController;
 use App\Http\Controllers\Panel\EditorUploadController;
 use App\Http\Controllers\Panel\PostController;
 use App\Http\Controllers\Panel\ProfileController;
 use App\Http\Controllers\Pnael\DashboardController;
+use App\Http\Controllers\ShowPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Panel\UserController;
 use App\Http\Controllers\Panel\CategoryController;
@@ -19,15 +21,10 @@ use App\Http\Controllers\Panel\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-})->name('landing');
+Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
-Route::get('/post/{id}', function () {
-    return view('post');
-})->name('post');
+Route::get('/post/{post:slug}', [ShowPostController::class, 'show'])->name('post.show');
 
 Route::middleware('auth')->get('panel/profile', [ProfileController::class, 'show'])->name('profile');
 Route::middleware('auth')->put('panel/profile', [ProfileController::class, 'update'])->name('profile.update');
