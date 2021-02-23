@@ -71,36 +71,17 @@
         <div class="container container--nav">
             <ul class="nav__ul">
                 <li class="nav__item"><a href="#" class="nav__link">صفحه اصلی</a></li>
-                <li class="nav__item nav__item--has-sub"><a href="#" class="nav__link">برنامه نویسی</a>
+                @foreach($categories as $category)
+                <li class="nav__item nav__item--has-sub"><a href="#" class="nav__link">{{ $category->name }}</a>
                     <div class="nav__sub">
                         <div class="container d-flex item-center flex-wrap container--nav">
-                            <a href="" class="nav__link">لینک یک </a>
-                            <a href="" class="nav__link">php</a>
-                            <a href="" class="nav__link">لینک سه</a>
-                            <a href="" class="nav__link">php</a>
+                            @foreach($category->children as $childCategory)
+                            <a href="" class="nav__link">{{ $childCategory->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </li>
-                <li class="nav__item nav__item--has-sub"><a href="#" class="nav__link">هک و امنیت</a>
-                    <div class="nav__sub">
-                        <div class="container d-flex item-center flex-wrap container--nav">
-                            <a href="" class="nav__link">لینک یک </a>
-                            <a href="" class="nav__link">c++</a>
-                            <a href="" class="nav__link">لینک سه</a>
-                            <!--                            <a href="" class="nav__sub-link">php</a>-->
-                        </div>
-                    </div>
-                </li>
-                <li class="nav__item nav__item--has-sub"><a href="#" class="nav__link">هک و امنیت</a>
-                    <div class="nav__sub">
-                        <div class="container d-flex item-center flex-wrap container--nav">
-                            <a href="" class="nav__link">لینک یک </a>
-                            <a href="" class="nav__link">c++</a>
-                            <a href="" class="nav__link">لینک سه</a>
-                            <!--                            <a href="" class="nav__sub-link">php</a>-->
-                        </div>
-                    </div>
-                </li>
+                @endforeach
                 <li class="nav__item"><a href="#" class="nav__link">درباره ما</a></li>
                 <li class="nav__item"><a href="#" class="nav__link">تماس باما</a></li>
             </ul>
