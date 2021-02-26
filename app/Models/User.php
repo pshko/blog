@@ -54,4 +54,8 @@ class User extends Authenticatable
         {
             return verta($this->created_at)->format('Y/m/d');
         }
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class, 'likes');
+    }
 }
