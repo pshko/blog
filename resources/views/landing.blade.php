@@ -5,7 +5,7 @@
     <main>
         <article class="container article">
             <div class="articles">
-                @foreach($posts as $post)
+                @forelse($posts as $post)
                 <div class="articles__item">
                     <a href="{{ route('post.show', $post->slug) }}" class="articles__link">
                         <div class="articles__img">
@@ -15,7 +15,7 @@
                             <h2>{{ $post->title }} </h2>
                         </div>
                         <div class="articles__desc">
-                            {!! $post->content !!}
+                            {!! Str::limit($post->content, 100) !!}
                         </div>
                         <div class="articles__details">
                             <div class="articles__author">نویسنده : {{$post->user->name}}</div>
@@ -23,7 +23,9 @@
                         </div>
                     </a>
                 </div>
-                @endforeach
+                @empty
+                    <p>هیچ مقاله ای یافت نشد!</p>
+                @endforelse
             </div>
         </article>
         {{$posts->links()}}

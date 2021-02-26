@@ -1,5 +1,4 @@
 $('.nav__item--has-sub').hover(function (e) {
-    $(this).parent().find('.nav__link').removeAttr('href');
     var sh = $(this).find('.nav__sub').prop('scrollHeight');
     $(this).find('.nav__sub').css({'height': sh + 'px', 'transition': 'all 200ms ease'});
 }, function () {
@@ -25,9 +24,6 @@ $(window).scroll(function () {
         $(".nav").removeClass("nav--sticky")
         $('.scroll-top').fadeOut()
     }
-})
-$(".single-page__like").on("click", function () {
-    $(this).toggleClass("single-page__like--is-active");
 })
 
 $(document).ready(function(){

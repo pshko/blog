@@ -15,6 +15,7 @@ protected $fillable = [
     'post_id',
     'is_approved'
 ];
+protected $with = ['approvedReplies'];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,6 +34,10 @@ protected $fillable = [
         return verta($this->created_at)->format('Y/m/d');
     }
 
+    public function approvedReplies()
+    {
+        return $this->replies()->where('is_approved', true);
+}
     public function getStatusInPersian()
     {
         return !! $this->is_approved

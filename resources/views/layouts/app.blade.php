@@ -13,7 +13,6 @@
     <link rel="canonical" href="https://webamooz.net"/>
     <link rel="stylesheet" href="{{ asset('/blog/css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('/blog/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('/blog/panel/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/blog/css/responsive.css') }}" media="(max-width:991px)">
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">-->
 </head>
@@ -70,13 +69,13 @@
         </div>
         <div class="container container--nav">
             <ul class="nav__ul">
-                <li class="nav__item"><a href="#" class="nav__link">صفحه اصلی</a></li>
+                <li class="nav__item"><a href="{{ route('landing') }}" class="nav__link">صفحه اصلی</a></li>
                 @foreach($categories as $category)
-                <li class="nav__item nav__item--has-sub"><a href="#" class="nav__link">{{ $category->name }}</a>
+                <li class="nav__item nav__item--has-sub"><a href="{{ route('category.show', $category->slug) }}" class="nav__link">{{ $category->name }}</a>
                     <div class="nav__sub">
                         <div class="container d-flex item-center flex-wrap container--nav">
                             @foreach($category->children as $childCategory)
-                            <a href="" class="nav__link">{{ $childCategory->name }}</a>
+                            <a href="{{ route('category.show', $childCategory->slug) }}" class="nav__link">{{ $childCategory->name }}</a>
                             @endforeach
                         </div>
                     </div>
@@ -134,5 +133,12 @@
         document.getElementById('logout-form').submit();
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(Session::has('status'))
+    <script>
+        Swal.fire({title: '{{ session('status') }}', confirmButtonText: 'تایید', icon: 'success'});
+    </script>
+@endif
+{{ $script ?? '' }}
 </body>
 </html>

@@ -80,6 +80,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{ $comments->appends(request()->query())->links() }}
         </div>
     </div>
     <x-slot name="script">

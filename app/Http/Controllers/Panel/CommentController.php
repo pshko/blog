@@ -13,7 +13,7 @@ class CommentController extends Controller
     public function index(Request $request)
     {
         if(isset($request->approved)){
-            $comments = Comment::where('is_approved', !! $request->approved)->with(['user', 'post'])->withCount('replies')->paginate(10);
+            $comments = Comment::where('is_approved', !! $request->approved)->with(['user', 'post'])->withCount('replies')->paginate(8);
         }
         else{
             $comments = Comment::with(['user', 'post'])->withCount('replies')->paginate(10);

@@ -28,6 +28,7 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/post/{post:slug}', [ShowPostController::class, 'show'])->name('post.show');
+Route::get('/category/{category:slug}', [ShowPostCategoryController::class, 'show'])->name('category.show');
 Route::middleware(['auth'])->post('/comment', [StoreCommentController::class, 'store'])->name('comment.store');
 Route::middleware(['auth', 'throttle:like'])->post('/like/{post:slug}', [LikePostController::class, 'store'])->name('like.post');
 Route::middleware('auth')->get('panel/profile', [ProfileController::class, 'show'])->name('profile');
